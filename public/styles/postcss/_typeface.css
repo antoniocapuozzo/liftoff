@@ -1,0 +1,42 @@
+/*
+// ----------------------------------
+// 🎮 Games - Typeface Style
+// ----------------------------------
+*/
+
+:root {
+  --font-name-a: "Graphik-Regular";
+
+  --font-name-b: "Newzald-Black";
+
+  --font-name-c: "PressuraMonoLight";
+
+  --font-primary: var(--font-name-a), -apple-system, BlinkMacSystemFont,
+    Helvetica, Arial, sans-serif;
+
+  --font-secondary: var(--font-name-b), -apple-system, BlinkMacSystemFont,
+    Helvetica, Arial, sans-serif;
+
+  --font-code: var(--font-name-c), Menlo, Monaco, monospace;
+}
+
+@font-face {
+  font-family: "Graphik-Regular";
+  src: url("../../fonts/Graphik-Regular.woff2") format("woff2"),
+    url("../../fonts/Graphik-Regular.woff") format("woff"),
+    url("../../fonts/Graphik-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Newzald-Black";
+  src: url("../../fonts/Newzald-Black.woff2") format("woff2"),
+    url("../../fonts/Newzald-Black.woff") format("woff"),
+    url("../../fonts/Newzald-Black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "PressuraMonoLight";
+  src: url("../../fonts/Pressura Mono Light.woff2") format("woff2"),
+    url("../../fonts/Pressura Mono Light.woff") format("woff"),
+    url("../../fonts/Pressura Mono Light.otf") format("opentype");
+}

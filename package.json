@@ -1,0 +1,29 @@
+{
+  "name": "liftoff",
+  "description": "A rapid boilerplate for frontend web development with PostCSS, BrowserSync & Php",
+  "main": "package.json",
+  "author": {
+    "name": "Antonio Capuozzo",
+    "url": "http://antoniocapuozzo.me"
+  },
+  "version": "1.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antoniocapuozzo/liftoff.git"
+  },
+  "scripts": {
+    "start": "npm run serve & (npm run sync & npm run style)",
+    "serve": "php -S localhost:8000 &> /dev/null",
+    "sync": "browser-sync start --proxy 'localhost:8000' --files ['public', 'app'] --ignore ['**/.lock', '**/.DS_Store'] --no-notify --logLevel debug",
+    "style": "postcss -w public/styles/postcss/app.css --dir public/styles/css/"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.2",
+    "postcss": "^8.4.33",
+    "postcss-cli": "^11.0.0",
+    "postcss-discard-comments": "^6.0.1",
+    "postcss-import": "^16.0.0",
+    "postcss-preset-env": "^9.3.0"
+  }
+}

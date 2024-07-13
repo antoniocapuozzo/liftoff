@@ -1,0 +1,68 @@
+/*
+// ----------------------------------
+// 🎮 Games - Header Styles
+// ----------------------------------
+*/
+
+.site-header {
+  position: sticky;
+  top: calc(var(--gutter) * 2);
+  transition: top 0.15s ease-in;
+  z-index: 1;
+
+  &.is-scrolled {
+    top: calc(var(--gutter) / 1.5);
+  }
+}
+
+.site-header-wrapper {
+  align-items: center;
+  backdrop-filter: blur(15px);
+  background-color: var(--background-color-100);
+  border-radius: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.site-header-logo {
+  margin: 0;
+  height: var(--gutter);
+  width: var(--gutter);
+  background-color: var(--background-color-200);
+  border-radius: var(--gutter);
+
+  a {
+    height: 100%;
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-indent: -999em;
+  }
+}
+
+.site-header-nav-main {
+  position: relative;
+  font-size: 17px;
+  > ul {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  > ul > li {
+    position: relative;
+  }
+
+  > ul > li > a {
+    border-radius: var(--radius);
+    display: block;
+    padding: 4px 12px;
+    &:hover {
+      text-decoration: none;
+    }
+    &.is-active {
+      background-color: var(--background-color-200);
+    }
+  }
+}

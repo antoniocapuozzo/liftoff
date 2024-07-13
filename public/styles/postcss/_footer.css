@@ -1,0 +1,14 @@
+/*
+// ----------------------------------
+// 🎮 Games - Footer Styles
+// ----------------------------------
+*/
+
+.site-footer {
+  margin-top: auto;
+}
+
+.site-footer-wrap {
+  display: flex;
+  justify-content: space-between;
+}
