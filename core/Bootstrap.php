@@ -36,11 +36,12 @@ class Bootstrap
     $helpersPath = __DIR__ . '/Helpers.php';
     if (file_exists($helpersPath)) {
       require_once $helpersPath;
-      echo 'Funzioni di Helpers caricate';
+      echo 'File Helpers caricato';
     } else {
-      echo 'Funzioni di Helpers non caricate: ' . $helpersPath;
+      echo 'Errore: Il file Helpers.php non esiste o è in un percorso errato';
     }
   }
+
   private function setRoutes()
   {
     $router = new Router();

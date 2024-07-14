@@ -2,16 +2,10 @@
 
 namespace Liftoff\Core;
 
-// Funzione per includere un file CSS
-if (!function_exists('css')) {
-  function css($filename)
+class Helpers
+{
+  public static function css($filename)
   {
-    $filePath = '/public/styles/css/' . $filename;
-    echo '<link rel="stylesheet" type="text/css" href="' . $filePath . '">';
+    echo "<link rel='stylesheet' href='/public/styles/css/$filename'>";
   }
-}
-
-// Aggiungi una verifica per confermare che il file viene caricato
-if (!function_exists('css')) {
-  echo 'Errore, qualcosa non è stato caricato correttamente';
 }
