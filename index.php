@@ -1,16 +1,10 @@
 <?php
+// Includiamo il file Bootstrap.php per inizializzare l'applicazione
+require_once __DIR__ . '/core/Bootstrap.php';
 
-// Autoload delle classi
-function autoload($className)
-{
-  if (file_exists(__DIR__ . '/core/' . $className . '.php')) {
-    require_once __DIR__ . '/core/' . $className . '.php';
-  } elseif (file_exists(__DIR__ . '/app/controllers/' . $className . '.php')) {
-    require_once __DIR__ . '/app/controllers/' . $className . '.php';
-  }
-}
-spl_autoload_register('autoload');
+// Utilizziamo il namespace Liftoff\Core
+use Liftoff\Core\Bootstrap;
 
-// Inizializza il router
-$router = new Router();
-$router->dispatch($_SERVER['REQUEST_URI']);
+// Creiamo un'istanza della classe Bootstrap e avviamo l'applicazione
+$bootstrap = new Bootstrap();
+$bootstrap->run();

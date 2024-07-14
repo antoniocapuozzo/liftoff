@@ -1,10 +1,9 @@
 <?php
 
+namespace Liftoff\Core;
+
+// Classe base Controller che può essere estesa da altri controller
 class Controller
 {
-  protected function view($viewName, $data = [])
-  {
-    $view = new View($viewName, $data);
-    $view->render();
-  }
+  // Funzionalità base del controller possono essere aggiunte qui
 }

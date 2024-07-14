@@ -1,43 +1,36 @@
 <?php
 
+namespace Liftoff\Core;
+
+// Classe per gestire il routing
 class Router
 {
-  public function dispatch($uri)
+  // Array per memorizzare le rotte
+  private $routes = [];
+
+  // Metodo per aggiungere una rotta
+  public function addRoute($path, $controller, $action)
   {
-    // Rimuove query string
-    if (strpos($uri, '?') !== false) {
-      $uri = strstr($uri, '?', true);
-    }
+    $this->routes[$path] = ['controller' => $controller, 'action' => $action];
+  }
 
-    // Rimuove eventuali slash finali
-    $uri = rtrim($uri, '/');
+  // Metodo per gestire le richieste
+  public function dispatch()
+  {
+    // Otteniamo l'URI della richiesta
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $uri = trim($uri, '/');
 
-    // Route di default
-    if ($uri === '' || $uri === '/') {
-      $controller = new HomeController();
-      return $controller->index();
-    }
+    // Se l'URI esiste nelle rotte, chiamiamo il controller e l'azione corrispondenti
+    if (array_key_exists($uri, $this->routes)) {
+      $controllerName = $this->routes[$uri]['controller'];
+      $actionName = $this->routes[$uri]['action'];
 
-    // Splitta l'URI per ottenere controller e metodo
-    $segments = explode('/', trim($uri, '/'));
-    $controllerName = ucfirst(array_shift($segments)) . 'Controller';
-    $methodName = array_shift($segments);
-
-    // Se il metodo è vuoto o 'index', usa 'index' come metodo predefinito
-    if (empty($methodName) || $methodName === 'index') {
-      $methodName = 'index';
-    }
-
-    // Controlla se il controller e il metodo esistono
-    if (file_exists(__DIR__ . '/../app/controllers/' . $controllerName . '.php')) {
+      // Creiamo un'istanza del controller e chiamiamo l'azione
       $controller = new $controllerName();
-      if (method_exists($controller, $methodName)) {
-        return $controller->$methodName();
-      }
+      $controller->$actionName();
+    } else {
+      echo "404 - Page not found";
     }
-
-    // Se non trovato, mostra un errore 404
-    header("HTTP/1.0 404 Not Found");
-    echo "404 Not Found";
   }
 }
